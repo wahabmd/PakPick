@@ -57,7 +57,7 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ products, onBack }) => 
                 </div>
                 <button
                     onClick={onBack}
-                    className="p-2 bg-slate-800 rounded-full hover:bg-slate-700 transition"
+                    className="p-2 bg-slate-200 dark:bg-slate-800 rounded-full hover:bg-slate-300 dark:hover:bg-slate-700 transition text-slate-700 dark:text-white"
                 >
                     <X className="w-6 h-6" />
                 </button>
@@ -112,26 +112,26 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ products, onBack }) => 
                         </div>
 
                         <div className="p-8 space-y-6">
-                            <div className="flex justify-between items-center pb-4 border-b border-slate-800">
-                                <span className="text-slate-500 font-bold uppercase text-[10px]">Abhi ki Keemat (Price)</span>
-                                <span className="text-2xl font-black text-white">PKR {p.price}</span>
+                            <div className="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-slate-800">
+                                <span className="text-slate-500 dark:text-slate-500 font-bold uppercase text-[10px]">Abhi ki Keemat (Price)</span>
+                                <span className="text-2xl font-black text-[#0f172a] dark:text-white">PKR {p.price}</span>
                             </div>
 
-                            <div className="flex justify-between items-center pb-4 border-b border-slate-800">
-                                <div className="flex items-center text-slate-500 font-bold uppercase text-[10px]">
+                            <div className="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-slate-800">
+                                <div className="flex items-center text-slate-500 dark:text-slate-500 font-bold uppercase text-[10px]">
                                     <Users className="w-3 h-3 mr-1" /> Log Kitna Pasand Kar Rahein?
                                 </div>
-                                <span className={`font-bold ${p.sentiment_label === 'High Demand' ? 'text-green-400' : 'text-blue-400'
+                                <span className={`font-bold ${p.sentiment_label === 'High Demand' ? 'text-green-600 dark:text-green-400' : 'text-blue-600 dark:text-blue-400'
                                     }`}>
                                     {p.sentiment_label === 'High Demand' ? 'Bohat Zyada Demand' : (p.sentiment_label || 'Achi Demand')}
                                 </span>
                             </div>
 
-                            <div className="flex justify-between items-center pb-4 border-b border-slate-800">
-                                <div className="flex items-center text-slate-500 font-bold uppercase text-[10px]">
+                            <div className="flex justify-between items-center pb-4 border-b border-slate-200 dark:border-slate-800">
+                                <div className="flex items-center text-slate-500 dark:text-slate-500 font-bold uppercase text-[10px]">
                                     <TrendingUp className="w-3 h-3 mr-1" /> Agay Barhnay ka Chance
                                 </div>
-                                <span className="text-green-400 font-bold">{p.growth || '+12%'} Tezi se</span>
+                                <span className="text-green-600 dark:text-green-400 font-bold">{p.growth || '+12%'} Tezi se</span>
                             </div>
 
                             <div className="bg-blue-600/5 border border-blue-500/10 p-4 rounded-xl">
@@ -153,7 +153,7 @@ const ComparisonView: React.FC<ComparisonViewProps> = ({ products, onBack }) => 
             </div>
 
             {products.length === 1 && (
-                <div className="text-center py-20 border-2 border-dashed border-slate-800 rounded-3xl">
+                <div className="text-center py-20 border-2 border-dashed border-slate-300 dark:border-slate-800 rounded-3xl">
                     <p className="text-slate-500">Add a second product from search results to enable smart arbitrage analysis.</p>
                 </div>
             )}

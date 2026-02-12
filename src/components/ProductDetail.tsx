@@ -193,7 +193,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
                                         type="number"
                                         value={customCost}
                                         onChange={(e) => handleCostChange(e.target.value)}
-                                        className="w-full bg-slate-800/50 border border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500"
+                                        className="w-full bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-blue-500 text-[#0f172a] dark:text-white"
                                     />
                                 </div>
                                 <div>
@@ -202,25 +202,25 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
                                 </div>
                             </div>
 
-                            <div className="h-px bg-slate-800 my-2"></div>
+                            <div className="h-px bg-slate-200 dark:bg-slate-800 my-2"></div>
 
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                                 <div>
                                     <div className="text-slate-500 text-[10px] font-bold uppercase mb-1">Platform Fees</div>
-                                    <div className="text-lg font-bold text-slate-400">Rs. {calculatedProfit?.fees || 0}</div>
+                                    <div className="text-lg font-bold text-slate-600 dark:text-slate-400">Rs. {calculatedProfit?.fees || 0}</div>
                                 </div>
                                 <div>
                                     <div className="text-slate-500 text-[10px] font-bold uppercase mb-1">Net Profit</div>
-                                    <div className={`text-lg font-bold ${calculatedProfit?.is_profitable ? 'text-green-400' : 'text-red-400'}`}>Rs. {calculatedProfit?.profit || 0}</div>
+                                    <div className={`text-lg font-bold ${calculatedProfit?.is_profitable ? 'text-green-600 dark:text-green-400' : 'text-red-500'}`}>Rs. {calculatedProfit?.profit || 0}</div>
                                 </div>
                                 <div>
                                     <div className="text-slate-500 text-[10px] font-bold uppercase mb-1">ROI / Margin</div>
-                                    <div className={`text-xl font-black ${calculatedProfit?.is_profitable ? 'text-blue-400' : 'text-red-400'}`}>{calculatedProfit?.margin || '0%'}</div>
+                                    <div className={`text-xl font-black ${calculatedProfit?.is_profitable ? 'text-blue-600 dark:text-blue-400' : 'text-red-500'}`}>{calculatedProfit?.margin || '0%'}</div>
                                 </div>
                                 <div>
                                     <div className="text-slate-500 text-[10px] font-bold uppercase mb-1">Entry Risk</div>
                                     <div className="text-sm font-bold mt-1">
-                                        <span className={`px-2 py-0.5 rounded ${product.competition_score > 70 ? 'bg-green-500/10 text-green-400' : 'bg-red-500/10 text-red-400'}`}>
+                                        <span className={`px-2 py-0.5 rounded ${product.competition_score > 70 ? 'bg-green-500/10 text-green-600 dark:text-green-400' : 'bg-red-500/10 text-red-500'}`}>
                                             {product.competition_score > 70 ? 'Low Risk' : 'High Competition'}
                                         </span>
                                     </div>
@@ -242,7 +242,12 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
                                 <XAxis dataKey="name" stroke="#64748b" fontSize={12} />
                                 <YAxis stroke="#64748b" fontSize={12} hide />
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b', borderRadius: '12px' }}
+                                    contentStyle={{
+                                        backgroundColor: document.documentElement.getAttribute('data-theme') === 'light' ? '#ffffff' : '#0f172a',
+                                        border: '1px solid #1e293b',
+                                        borderRadius: '12px',
+                                        color: document.documentElement.getAttribute('data-theme') === 'light' ? '#0f172a' : '#ffffff'
+                                    }}
                                 />
                                 <Area
                                     type="monotone"
@@ -257,7 +262,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
                     </div>
                 </div>
 
-                <div className="glass-card p-8 bg-slate-900/50">
+                <div className="glass-card p-8 bg-white dark:bg-slate-900/50">
                     <h3 className="text-xl font-bold mb-6 flex items-center text-slate-900 dark:text-white">
                         <Truck className="w-5 h-5 mr-3 text-purple-400" /> Sourcing Strategy Advisor
                     </h3>

@@ -227,7 +227,7 @@ function App() {
         </motion.div>
       </div>
 
-      <div className="mt-24 border-t border-slate-800 pt-12">
+      <div className="mt-24 border-t border-slate-200 dark:border-slate-800 pt-12">
         <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest text-center mb-12">Aaj ki Market Update (Daily Insights)</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="glass-card p-6 text-center">
@@ -308,7 +308,7 @@ function App() {
               exit={{ opacity: 0, scale: 0.95 }}
               className="max-w-4xl mx-auto px-4 pt-20"
             >
-              <button onClick={() => setView('landing')} className="mb-8 text-slate-400 hover:text-white flex items-center">
+              <button onClick={() => setView('landing')} className="mb-8 text-slate-500 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white flex items-center">
                 <ChevronLeft className="w-4 h-4 mr-1" /> Back
               </button>
               <h2 className="text-3xl font-bold mb-8">Enter Keyword</h2>
@@ -340,7 +340,7 @@ function App() {
             >
               <button
                 onClick={() => { setView('landing'); setProducts([]); }}
-                className="mb-8 text-slate-400 hover:text-white flex items-center"
+                className="mb-8 text-slate-500 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white flex items-center"
               >
                 <ChevronLeft className="w-4 h-4 mr-1" /> Back to Home
               </button>
@@ -367,7 +367,7 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               className="max-w-7xl mx-auto px-4 pt-12 pb-20"
             >
-              <button onClick={() => setView('results')} className="mb-8 text-slate-400 hover:text-white flex items-center">
+              <button onClick={() => setView('results')} className="mb-8 text-slate-500 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white flex items-center">
                 <ChevronLeft className="w-4 h-4 mr-1" /> Back to Results
               </button>
               {selectedProductId && <ProductDetail productId={selectedProductId} />}
@@ -391,7 +391,7 @@ function App() {
               animate={{ opacity: 1 }}
               className="max-w-7xl mx-auto px-4 pt-12 pb-20"
             >
-              <button onClick={() => setView('landing')} className="mb-8 text-slate-400 hover:text-white flex items-center">
+              <button onClick={() => setView('landing')} className="mb-8 text-slate-500 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white flex items-center">
                 <ChevronLeft className="w-4 h-4 mr-1" /> Back to Dashboard
               </button>
               <SellerDashboard shopData={connectedShopData} />
@@ -406,7 +406,7 @@ function App() {
               <div className="flex items-center justify-between mb-8">
                 <button
                   onClick={() => setView('landing')}
-                  className="text-slate-400 hover:text-white flex items-center"
+                  className="text-slate-500 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white flex items-center"
                 >
                   <ChevronLeft className="w-4 h-4 mr-1" /> Back
                 </button>
@@ -422,7 +422,7 @@ function App() {
                   <p className="text-slate-400 mb-6">Discovery Engine: Identify high-velocity products before they saturate.</p>
 
                   {/* Trend Type Toggle */}
-                  <div className="inline-flex bg-slate-800/50 p-1 rounded-xl border border-slate-700">
+                  <div className="inline-flex bg-slate-100 dark:bg-slate-800/50 p-1 rounded-xl border border-slate-200 dark:border-slate-700">
                     <button
                       onClick={() => handleShowTrends('daily')}
                       className={`px-6 py-2 rounded-lg text-sm font-bold transition-all ${trendType === 'daily'

@@ -100,21 +100,26 @@ const SellerDashboard: React.FC<SellerDashboardProps> = ({ shopData }) => {
                                         <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
                                     </linearGradient>
                                 </defs>
-                                <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
+                                <CartesianGrid strokeDasharray="3 3" stroke={document.documentElement.getAttribute('data-theme') === 'light' ? '#e2e8f0' : '#1e293b'} />
                                 <XAxis dataKey="name" stroke="#64748b" fontSize={10} />
                                 <YAxis stroke="#64748b" fontSize={10} hide />
                                 <Tooltip
-                                    contentStyle={{ backgroundColor: '#0f172a', border: '1px solid #1e293b', borderRadius: '12px' }}
+                                    contentStyle={{
+                                        backgroundColor: document.documentElement.getAttribute('data-theme') === 'light' ? '#ffffff' : '#0f172a',
+                                        border: '1px solid #1e293b',
+                                        borderRadius: '12px',
+                                        color: document.documentElement.getAttribute('data-theme') === 'light' ? '#0f172a' : '#ffffff'
+                                    }}
                                 />
                                 <Area type="monotone" dataKey="shop" stroke="#3b82f6" fillOpacity={1} fill="url(#colorShop)" strokeWidth={3} />
                                 <Area type="monotone" dataKey="market" stroke="#64748b" strokeDasharray="5 5" fill="transparent" strokeWidth={2} />
                             </AreaChart>
                         </ResponsiveContainer>
                     </div>
-                    <div className="mt-4 p-4 bg-slate-800/50 rounded-xl border border-slate-700">
+                    <div className="mt-4 p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
                         <div className="flex items-start space-x-3 text-sm">
-                            <Zap className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
-                            <p className="text-slate-300 italic text-[11px] leading-relaxed">
+                            <Zap className="w-4 h-4 text-yellow-500 dark:text-yellow-400 mt-0.5 flex-shrink-0" />
+                            <p className="text-slate-600 dark:text-slate-300 italic text-[11px] leading-relaxed">
                                 AI Observation: "Your shop is seeing a decline during peak weekend hours (Fri-Sun) while the market is rising. This suggests a potential pricing or ad-visibility gap during high-traffic periods."
                             </p>
                         </div>
@@ -122,19 +127,19 @@ const SellerDashboard: React.FC<SellerDashboardProps> = ({ shopData }) => {
                 </div>
 
                 {/* VISUALIZER 2: INVENTORY WATCHLIST */}
-                <div className="glass-card p-8 bg-slate-900/40">
+                <div className="glass-card p-8 bg-white dark:bg-slate-900/40">
                     <h3 className="text-xl font-bold mb-6 flex items-center">
-                        <Box className="w-5 h-5 mr-3 text-purple-400" /> Smart Stock Watchlist
+                        <Box className="w-5 h-5 mr-3 text-purple-600 dark:text-purple-400" /> Smart Stock Watchlist
                     </h3>
                     <div className="space-y-4">
                         {shopData.items.map((item: any, i: number) => (
-                            <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between bg-slate-800/30 p-4 rounded-2xl border border-slate-700/50 group hover:border-blue-500/30 transition-all">
+                            <div key={i} className="flex flex-col sm:flex-row sm:items-center justify-between bg-slate-50 dark:bg-slate-800/30 p-4 rounded-2xl border border-slate-200 dark:border-slate-700/50 group hover:border-blue-500/30 transition-all">
                                 <div className="flex items-center space-x-4">
-                                    <div className="w-10 h-10 bg-slate-700 rounded-lg flex items-center justify-center font-bold text-xs text-slate-400">IMG</div>
+                                    <div className="w-10 h-10 bg-slate-200 dark:bg-slate-700 rounded-lg flex items-center justify-center font-bold text-xs text-slate-500">IMG</div>
                                     <div>
-                                        <h4 className="font-bold text-sm text-white">{item.title}</h4>
+                                        <h4 className="font-bold text-sm text-[#0f172a] dark:text-white">{item.title}</h4>
                                         <div className="text-[10px] text-slate-500">Market Price: Rs. {item.marketPrice} • Variance:
-                                            <span className={item.price > item.marketPrice ? 'text-red-400' : 'text-green-400'}>
+                                            <span className={item.price > item.marketPrice ? 'text-red-500 dark:text-red-400' : 'text-green-600 dark:text-green-400'}>
                                                 {((item.price - item.marketPrice) / item.marketPrice * 100).toFixed(0)}%
                                             </span>
                                         </div>
@@ -143,11 +148,11 @@ const SellerDashboard: React.FC<SellerDashboardProps> = ({ shopData }) => {
                                 <div className="flex items-center space-x-6 mt-4 sm:mt-0">
                                     <div className="text-right">
                                         <div className="text-[10px] text-slate-500 uppercase font-bold">Current Stock</div>
-                                        <div className={`font-black text-sm ${item.stock < 10 ? 'text-red-400' : 'text-slate-300'}`}>{item.stock} Units</div>
+                                        <div className={`font-black text-sm ${item.stock < 10 ? 'text-red-500' : 'text-slate-700 dark:text-slate-300'}`}>{item.stock} Units</div>
                                     </div>
-                                    <button className={`px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all flex items-center border ${item.stock < 10 ? 'bg-red-500/10 text-red-400 border-red-500/30' :
-                                        item.price > item.marketPrice ? 'bg-orange-500/10 text-orange-400 border-orange-500/30' :
-                                            'bg-blue-600/10 text-blue-400 border-blue-500/30'
+                                    <button className={`px-4 py-2 rounded-lg text-[10px] font-bold uppercase tracking-wider transition-all flex items-center border ${item.stock < 10 ? 'bg-red-500/10 text-red-500 border-red-500/30' :
+                                        item.price > item.marketPrice ? 'bg-orange-500/10 text-orange-500 border-orange-500/30' :
+                                            'bg-blue-600/10 text-blue-600 dark:text-blue-400 border-blue-500/30'
                                         }`}>
                                         {item.stock < 10 ? 'Urgent Restock' :
                                             item.price > item.marketPrice ? 'Price Fix' : 'Optimized'}
@@ -161,14 +166,14 @@ const SellerDashboard: React.FC<SellerDashboardProps> = ({ shopData }) => {
             </div>
 
             {/* ACTION CENTER */}
-            <div className="glass-card overflow-hidden bg-gradient-to-r from-blue-600/10 to-transparent border-blue-500/20">
+            <div className="glass-card overflow-hidden bg-gradient-to-r from-blue-600/10 to-transparent border-blue-500/20 dark:border-blue-500/20">
                 <div className="p-8 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div className="space-y-2">
                         <div className="flex items-center space-x-2">
-                            <Zap className="w-5 h-5 text-yellow-500" />
-                            <h3 className="text-2xl font-black">AI Growth Playbook</h3>
+                            <Zap className="w-5 h-5 text-yellow-600 dark:text-yellow-500" />
+                            <h3 className="text-2xl font-black text-[#0f172a] dark:text-white">AI Growth Playbook</h3>
                         </div>
-                        <p className="text-slate-400 text-sm max-w-xl">
+                        <p className="text-slate-600 dark:text-slate-400 text-sm max-w-xl">
                             We've analyzed 2,400+ data points across Daraz categories. Connect your Daraz Advertising token to automate your bids based on real-time market velocity.
                         </p>
                     </div>

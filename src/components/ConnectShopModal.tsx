@@ -58,7 +58,7 @@ const ConnectShopModal: React.FC<ConnectShopModalProps> = ({ isOpen, onClose, on
                     exit={{ opacity: 0, scale: 0.9, y: -20 }}
                     className="relative w-full max-w-lg glass-card p-8 shadow-2xl overflow-hidden"
                 >
-                    <button onClick={onClose} className="absolute top-4 right-4 p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-400">
+                    <button onClick={onClose} className="absolute top-4 right-4 p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-400 dark:text-slate-500">
                         <X className="w-5 h-5" />
                     </button>
 
@@ -75,16 +75,16 @@ const ConnectShopModal: React.FC<ConnectShopModalProps> = ({ isOpen, onClose, on
                             <div className="grid grid-cols-2 gap-4">
                                 <div
                                     onClick={() => setPlatform('Daraz')}
-                                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${platform === 'Daraz' ? 'border-orange-500 bg-orange-500/10' : 'border-slate-800 hover:border-slate-700'}`}
+                                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${platform === 'Daraz' ? 'border-orange-500 bg-orange-500/10' : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'}`}
                                 >
-                                    <div className="font-bold text-lg mb-1">Daraz</div>
+                                    <div className="font-bold text-lg mb-1 text-[#0f172a] dark:text-white">Daraz</div>
                                     <div className="text-[10px] text-slate-500 uppercase tracking-tighter">Verified Integration</div>
                                 </div>
                                 <div
                                     onClick={() => setPlatform('Markaz')}
-                                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${platform === 'Markaz' ? 'border-green-500 bg-green-500/10' : 'border-slate-800 hover:border-slate-700'}`}
+                                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all ${platform === 'Markaz' ? 'border-green-500 bg-green-500/10' : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'}`}
                                 >
-                                    <div className="font-bold text-lg mb-1">Markaz</div>
+                                    <div className="font-bold text-lg mb-1 text-[#0f172a] dark:text-white">Markaz</div>
                                     <div className="text-[10px] text-slate-500 uppercase tracking-tighter">Coming Soon</div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@ const ConnectShopModal: React.FC<ConnectShopModalProps> = ({ isOpen, onClose, on
                                     placeholder="e.g. PK-12345678"
                                     value={sellerId}
                                     onChange={(e) => setSellerId(e.target.value)}
-                                    className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
+                                    className="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 text-[#0f172a] dark:text-white placeholder:text-slate-400"
                                 />
                             </div>
 
@@ -124,7 +124,7 @@ const ConnectShopModal: React.FC<ConnectShopModalProps> = ({ isOpen, onClose, on
                                         <p className="text-slate-400 px-8 text-sm">Our AI is fetching your active listings and comparing them with current 2026 market trends.</p>
                                     </div>
                                     <div className="space-y-2">
-                                        <div className="h-1 w-full bg-slate-800 rounded-full overflow-hidden">
+                                        <div className="h-1 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
                                             <motion.div
                                                 initial={{ width: 0 }}
                                                 animate={{ width: "100%" }}
@@ -173,13 +173,13 @@ const ConnectShopModal: React.FC<ConnectShopModalProps> = ({ isOpen, onClose, on
                                 <h3 className="text-2xl font-bold text-white mb-2">Shop Successfully Synced</h3>
                                 <p className="text-slate-400 text-sm">Your store data is now integrated with PakPick Intelligence. We found <span className="text-blue-400 font-bold">4 competitive gaps</span> in your listings.</p>
                             </div>
-                            <div className="bg-slate-900 border border-slate-800 rounded-xl p-4 flex items-center space-x-4">
+                            <div className="bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex items-center space-x-4">
                                 <div className="w-12 h-12 bg-orange-500/10 rounded-lg flex items-center justify-center">
                                     <Store className="text-orange-500 w-6 h-6" />
                                 </div>
                                 <div className="text-left">
-                                    <div className="font-bold">Wahab's Premium Store</div>
-                                    <div className="text-[10px] text-slate-500">Seller ID: {sellerId} • Status: Active</div>
+                                    <div className="font-bold text-[#0f172a] dark:text-white">Wahab's Premium Store</div>
+                                    <div className="text-[10px] text-slate-500 uppercase font-bold">Seller ID: {sellerId} • Status: Active</div>
                                 </div>
                             </div>
                             <button
